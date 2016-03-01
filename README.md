@@ -5,6 +5,7 @@ Highload test code for [Node.js](http://nodejs.org) application
 - Install dependecies
 
 `npm i`
+
 Then run:
 
 `npm start`
