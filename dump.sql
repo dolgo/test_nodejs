@@ -1,0 +1,9 @@
+
+CREATE SCHEMA `test_store` DEFAULT CHARACTER SET utf8;
+
+CREATE TABLE `test_store`.`posts` (
+  `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `description` TEXT NULL,
+  `likes_count` INT(11) UNSIGNED NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`));
