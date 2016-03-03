@@ -3,22 +3,19 @@
  */
 var postsModel = require('../models/postsModel'),
     async = require('async'),
-    formidable = require('formidable'),
-    db = require('../db'),
-    fs = require('fs'),
-    path = require('path');
+    formidable = require('formidable');
 
 
 module.exports = {
 
     getList: function(req, resp) {
         var page = parseInt(req.query.page) || 0,
-            size = parseInt(req.query.size) || 20;
+            size = parseInt(req.query.size) || 10;
 
         postsModel.find()
             .limit(size)
             .offset(page * size)
-            .order('name')
+            .order('id')
             .run(function(err, rows) {
 
                 if (err) {

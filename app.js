@@ -1,11 +1,9 @@
 var express = require('express');
 var path = require('path');
-var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var app = express();
-var fs = require('fs');
 
 var controllers = {
     posts: require('./controllers/posts')
@@ -21,7 +19,7 @@ app.use(function(req, resp, next) {
     next();
 });
 
-app.use(logger('dev'));
+//app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());

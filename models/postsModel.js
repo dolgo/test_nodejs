@@ -22,7 +22,8 @@ var db = require('../db'),
         validations: {
             name: [db.orm.enforce.required()],
             likes_count: [db.orm.enforce.ranges.number(1, 99999999)]
-        }
+        },
+        cache: false
     });
 
 module.exports = productsModel;
