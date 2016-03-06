@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 var app = express();
 
 var controllers = {
-    posts: require('./controllers/posts')
+    messages: require('./controllers/messages')
 };
 
 // view engine setup
@@ -31,8 +31,10 @@ app.options('*', function(req, resp) {
     resp.send();
 });
 
-app.get('/posts/?$', controllers.posts.getList);
-app.post('/posts/?$', controllers.posts.add);
+app.get('/db/messages/?$', controllers.messages.getListFromDB);
+app.get('/nodb/messages/?$', controllers.messages.getList);
+app.post('/db/messages/?$', controllers.messages.addToDB);
+app.post('/nodb/messages/?$', controllers.messages.add);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

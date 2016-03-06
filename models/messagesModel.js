@@ -3,7 +3,7 @@
  */
 
 var db = require('../db'),
-    productsModel = db.link.define('posts', {
+    MessagesModel = db.link.define('messages', {
         name: {
             type: 'text',
             alwaysValidate: true
@@ -26,4 +26,4 @@ var db = require('../db'),
         cache: false
     });
 
-module.exports = productsModel;
+module.exports = MessagesModel;

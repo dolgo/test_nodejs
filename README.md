@@ -12,4 +12,9 @@ Highload test code for [Node.js](http://nodejs.org) application
 
     `npm start`
 
-Example route [http://localhost:3000/posts?size=10](http://localhost:3000/posts?size=10)
+Example routes:
+ GET [http://localhost:3000/db/messages](http://localhost:3000/db/messages)
+ GET [http://localhost:3000/nodb/messages](http://localhost:3000/nodb/messages)
+ GET [http://localhost:3000/images/like.png](http://localhost:3000/images/like.png)
+ POST [http://localhost:3000/db/messages](http://localhost:3000/db/messages)
+ POST [http://localhost:3000/nodb/messages](http://localhost:3000/nodb/messages)
