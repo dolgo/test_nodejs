@@ -11,17 +11,17 @@ module.exports = {
         var page = parseInt(req.query.page) || 0,
             size = parseInt(req.query.size) || 10;
 
-        MessagesModel.find()
-            .limit(size)
-            .offset(page * size)
-            .order('id')
-            .run(function(err, rows) {
+        MessagesModel.findAll({
+            limit: size,
+            offset: page * size,
+            order: 'id'
+        }).then(function(rows) {
 
-                if (err) {
-                    return resp.status(500).send(err);
-                }
-                resp.send(rows);
-            });
+            resp.send(rows);
+        }).catch(function(err) {
+
+            resp.status(500).send(err);
+        });
 
     },
 
@@ -39,23 +39,21 @@ module.exports = {
         var form = new formidable.IncomingForm();
 
         form.parse(req, function(err, reqData) {
-            var message;
 
             if (err) {
                 return resp.status(500).send(err);
             }
 
-            message = new MessagesModel;
-            message.name = reqData.name;
-            message.description = reqData.description;
-            message.likes_count = parseInt(reqData.likes_count) || null;
-
-            message.save(function(err) {
-                if (err) {
-                    return resp.status(500).send(err);
-                }
+            MessagesModel.create({
+                name: reqData.name,
+                description: reqData.description,
+                likes_count: parseInt(reqData.likes_count) || null
+            }).then(function(message) {
 
                 resp.send(message);
+            }).catch(function(err) {
+
+                resp.status(500).send(err);
             });
         });
     },

@@ -3,27 +3,20 @@
  */
 
 var db = require('../db'),
-    MessagesModel = db.link.define('messages', {
-        name: {
-            type: 'text',
-            alwaysValidate: true
-        },
-        description: {
-            type: 'text',
-            alwaysValidate: true
-        },
-        likes_count: {
-            type: 'number',
-            alwaysValidate: true
-        }
-    }, {
-        methods: {
-        },
-        validations: {
-            name: [db.orm.enforce.required()],
-            likes_count: [db.orm.enforce.ranges.number(1, 99999999)]
-        },
-        cache: false
-    });
+    MessagesModel;
+
+MessagesModel = db.link.define('messages', {
+    name: {
+        type: db.orm.STRING(45)
+    },
+    description: {
+        type: db.orm.TEXT
+    },
+    likes_count: {
+        type: db.orm.INTEGER
+    }
+}, {
+    timestamps: false
+});
 
 module.exports = MessagesModel;
