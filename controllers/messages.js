@@ -8,12 +8,12 @@ var MessagesModel = require('../models/messagesModel'),
 module.exports = {
 
     getListFromDB: function(req, resp) {
-        var page = parseInt(req.query.page) || 0,
+        var page = parseInt(req.query.page) || 1,
             size = parseInt(req.query.size) || 10;
 
         MessagesModel.findAll({
             limit: size,
-            offset: page * size,
+            offset: (page - 1) * size,
             order: 'id'
         }).then(function(rows) {
 
