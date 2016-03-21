@@ -27,12 +27,11 @@ module.exports = {
 
     getList: function(req, resp) {
 
-        resp.send([{
-            id: 1,
-            name: 'test name',
-            description: 'test description',
-            likes_count: 10
-        }]);
+        resp.send({
+            page: parseInt(req.query.page) || 1,
+            size: parseInt(req.query.size) || 10,
+            order: req.query.order || 'id'
+        });
     },
 
     addToDB: function(req, resp) {
